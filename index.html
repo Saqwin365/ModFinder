@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101810">
+  <title>ModFinder — Minecraft Mods</title>
+  <meta name="description" content="Знаходь моди Minecraft для Fabric, Forge, NeoForge та Quilt.">
+  <link rel="preconnect" href="https://api.modrinth.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">M</span><span>Mod<span>Finder</span></span></a>
+    <nav><a href="#mods" data-i18n="navMods">Моди</a><a href="#about" data-i18n="navAbout">Про сайт</a></nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="favoritesToggle" title="Обране">♡ <span data-i18n="favorites">Обране</span></button>
+      <select id="language" aria-label="Language"><option value="uk">UA</option><option value="en">EN</option><option value="ru">RU</option></select>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">ТВОЯ БІБЛІОТЕКА МОДІВ MINECRAFT</span></div>
+      <h1 data-i18n="heroTitle">Знайди свій наступний<br><span>улюблений мод.</span></h1>
+      <p data-i18n="heroText">Шукай, фільтруй та відкривай нові можливості Minecraft.</p>
+      <div class="search-box">
+        <span class="search-symbol">⌕</span>
+        <input id="searchInput" type="search" placeholder="Наприклад, Sodium, JEI, Xaero's Minimap..." data-i18n-placeholder="searchPlaceholder">
+        <button id="searchButton" class="search-button" data-i18n="search">Шукати</button>
+      </div>
+      <div class="quick-tags"><span data-i18n="popular">Популярне:</span><button data-query="Sodium">Sodium</button><button data-query="Iris Shaders">Iris Shaders</button><button data-query="Xaero's Minimap">Xaero's Minimap</button><button data-query="JEI">JEI</button></div>
+    </section>
+
+    <section class="stats">
+      <div><strong>Modrinth</strong><span data-i18n="source">Джерело модів</span></div>
+      <div><strong>4</strong><span data-i18n="loaders">Завантажувачі</span></div>
+      <div><strong>3</strong><span data-i18n="languages">Мови інтерфейсу</span></div>
+    </section>
+
+    <section id="mods" class="catalog">
+      <div class="section-heading"><div><div class="eyebrow small" data-i18n="catalogLabel">КАТАЛОГ</div><h2 id="resultsTitle" data-i18n="allMods">Знайди моди</h2></div><div class="result-count" id="resultCount"></div></div>
+      <div class="filters">
+        <label><span data-i18n="version">Версія Minecraft</span><select id="versionFilter"><option value="">Усі версії</option></select></label>
+        <label><span data-i18n="loader">Завантажувач</span><select id="loaderFilter"><option value="">Усі</option><option value="fabric">Fabric</option><option value="forge">Forge</option><option value="neoforge">NeoForge</option><option value="quilt">Quilt</option></select></label>
+        <label><span data-i18n="sort">Сортування</span><select id="sortFilter"><option value="relevance">За релевантністю</option><option value="downloads">За завантаженнями</option><option value="updated">Нещодавно оновлені</option></select></label>
+        <button id="resetFilters" class="reset-btn" data-i18n="reset">Скинути</button>
+      </div>
+      <div id="status" class="status"><span class="spinner"></span><span data-i18n="loading">Завантажуємо моди…</span></div>
+      <div id="modsGrid" class="mods-grid"></div>
+      <button id="loadMore" class="load-more hidden" data-i18n="loadMore">Показати ще</button>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-icon">✦</div><div><h2 data-i18n="aboutTitle">Моди з перевіреного джерела</h2><p data-i18n="aboutText">ModFinder отримує інформацію про проєкти безпосередньо з публічного API Modrinth. Завантаження відбувається зі сторінки або CDN Modrinth.</p></div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#"><span class="brand-icon">M</span><span>Mod<span>Finder</span></span></a><span>Fan-made catalog · <a href="https://modrinth.com" target="_blank" rel="noopener">Modrinth</a></span></footer>
+
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-card"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
